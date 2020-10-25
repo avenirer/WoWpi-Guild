@@ -1,0 +1,17 @@
+{
+    "name": "avenirer/wowpi-guild",
+    "type": "wordpress-plugin",
+    "license": "GNU GPLv2",
+    "authors": [
+        {
+            "name": "Adrian Voicu - Avenirer",
+            "email": "avenir.ro@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "WowpiGuild\\": "app/"
+        }
+    },
+    "require": {}
+}

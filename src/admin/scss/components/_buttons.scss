@@ -1,0 +1,92 @@
+.button,
+.button-primary,
+.button-secondary {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 26px;
+  height: 28px;
+  margin: 0;
+  padding: 0 10px 1px;
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-appearance: none;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  white-space: nowrap;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.button,
+.button-secondary {
+  color: #555;
+  border-color: #cccccc;
+  background: #f7f7f7;
+  -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba(0,0,0,.08);
+  box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba(0,0,0,.08);
+  vertical-align: top;
+}
+
+p .button {
+  vertical-align: baseline;
+}
+
+.button:hover,
+.button-secondary:hover,
+.button:focus,
+.button-secondary:focus {
+  background: #fafafa;
+  border-color: #999;
+  color: #222;
+}
+
+.button:focus,
+.button-secondary:focus {
+  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+  box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+}
+
+.button:active,
+.button-secondary:active {
+  background: #eee;
+  border-color: #999;
+  color: #333;
+  -webkit-box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
+  box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
+}
+
+.button-primary {
+  background: #2ea2cc;
+  border-color: #0074a2;
+  -webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,0.5), 0 1px 0 rgba(0,0,0,.15);
+  box-shadow: inset 0 1px 0 rgba(120,200,230,0.5), 0 1px 0 rgba(0,0,0,.15);
+  color: #fff;
+  text-decoration: none;
+}
+
+.button-primary:hover,
+.button-primary:focus {
+  background: #1e8cbe;
+  border-color: #0074a2;
+  -webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,0.6);
+  box-shadow: inset 0 1px 0 rgba(120,200,230,0.6);
+  color: #fff;
+}
+
+.button-primary:focus {
+  border-color: #0e3950;
+  -webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,0.6), 1px 1px 2px rgba(0,0,0,0.4);
+  box-shadow: inset 0 1px 0 rgba(120,200,230,0.6), 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+.button-primary:active {
+  background: #1b7aa6;
+  border-color: #005684;
+  color: rgba(255,255,255,0.95);
+  -webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.1);
+  vertical-align: top;
+}
