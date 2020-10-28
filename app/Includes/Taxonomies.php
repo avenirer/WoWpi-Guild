@@ -21,6 +21,7 @@ class Taxonomies {
 		add_action('init', array($this, 'createClassSpecTaxonomy'));
 		add_action('init', array($this, 'createAchievementTaxonomy'));
 		add_action('init', array($this, 'createGenderTaxonomy'));
+		add_action('init', array($this, 'createStatusTaxonomy'));
 	}
 
 	public function createRaceTaxonomy() {
@@ -141,6 +142,37 @@ class Taxonomies {
 				'show_admin_column' => true,
 				'query_var' => true,
 				'rewrite' => array( 'slug' => 'gender' ),
+			)
+		);
+	}
+
+	public function createStatusTaxonomy() {
+		$labels = array(
+			'name' => _x( 'Character status', $this->plugin_name ),
+			'singular_name' => _x( 'Status', $this->plugin_name ),
+			'search_items' =>  __( 'Search Statuses', $this->plugin_name ),
+			'all_items' => __( 'All Statuses', $this->plugin_name ),
+			//'parent_item' => __( 'Parent Race', $this->plugin_name ),
+			//'parent_item_colon' => __( 'Parent Subject:', $this->plugin_name ),
+			'edit_item' => __( 'Edit Status', $this->plugin_name ),
+			'update_item' => __( 'Update Status', $this->plugin_name ),
+			'add_new_item' => __( 'Add New Status', $this->plugin_name ),
+			'new_item_name' => __( 'New Status title', $this->plugin_name ),
+			'menu_name' => __( 'Statuses', $this->plugin_name ),
+		);
+
+		// Now register the taxonomy
+		register_taxonomy(
+			'wowpi_guild_character_status',
+			array('wowpi_guild_member'),
+			array(
+				'hierarchical' => false,
+				'labels' => $labels,
+				'show_ui' => true,
+				'show_in_rest' => true,
+				'show_admin_column' => true,
+				'query_var' => true,
+				'rewrite' => array( 'slug' => 'status' ),
 			)
 		);
 	}

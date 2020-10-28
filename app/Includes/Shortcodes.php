@@ -18,32 +18,89 @@ class Shortcodes {
 		//add_shortcode('wowpi_realms','wowpi_shortcode_realms');
 	}
 
-	public function getRoster() {
-		wp_enqueue_script( 'wowpi-guild-roster', Settings::pluginUrl() . 'dist/public/js/wowpi-guild-roster.js', array( 'jquery' ), $this->version, true );
-		wp_localize_script( 'wowpi-guild-roster', 'wowpiRosterAjax', array( 'ajaxurl' => admin_url('admin-ajax.php?action=getRoster')) );
+	public function getRoster($atts) {
 
-		$output = '<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">';
+
+		$pull_guild_atts = shortcode_atts( array(
+			'ranks' => '', // 1|2|3 or 1:Rankname|2:Blaubu
+			'id' => 'wowpi_guild_roster',
+			'class' => '',
+			'rows' => '25', // can be a number or 'all'
+			'linkto' => 'simple',
+		), $atts );
+
+		$tableId = filter_var($pull_guild_atts['id'], FILTER_SANITIZE_STRING);
+		$tableClass = filter_var($pull_guild_atts['class'], FILTER_SANITIZE_STRING);
+		$rows = filter_var($pull_guild_atts['rows'], FILTER_SANITIZE_STRING);
+		$ranks = filter_var($pull_guild_atts['ranks'], FILTER_SANITIZE_STRING);
+
+		$ajaxUrl = admin_url('admin-ajax.php?action=getRoster');
+
+		if($ranks) {
+			$ajaxUrl .= '&ranks='.$ranks;
+		}
+
+		$rows = is_numeric($rows) ? intval($rows) : 1000;
+
+        $columns = array(
+            array(
+                'data' => 'name',
+                'sortable' => true,
+            ),
+            array(
+                'data' => 'race',
+                'sortable' => false,
+            ),
+            array(
+                'data' => 'class',
+                'sortable' => false,
+            ),
+            array(
+                'data' => 'role',
+                'sortable' => false,
+            ),
+            array(
+                'data' => 'level',
+                'sortable' => true,
+            ),
+            array(
+                'data' => 'rank',
+                'sortable' => false,
+            ),
+        );
+
+		wp_enqueue_script( 'wowpi-guild-roster', Settings::pluginUrl() . 'dist/public/js/wowpi-guild-roster.js', array( 'jquery' ), $this->version, true );
+		wp_localize_script( 'wowpi-guild-roster', 'wowpiRosterAjax', array(
+			'datatable_id' => $tableId,
+			'datatable_class' => $tableClass,
+			'datatable_length' => $rows,
+			'ajaxurl' => $ajaxUrl,
+			'columns' => json_encode($columns)
+		) );
+
+		$output = '<link rel="stylesheet" type="text/css" href="' . Settings::pluginUrl() . 'dist/public/css/wowpi-guild-roster.css">';
 		$output .= '<table id="wowpi_guild_roster">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Race</th>
-            <th>Class</th>
-            <th>Role</th>
-            <th>Level</th>
-            <th>Guild Rank</th>
+            <th>'.__('Name', 'wowpi-guild').'</th>
+            <th>'.__('Race', 'wowpi-guild').'</th>
+            <th>'.__('Class', 'wowpi-guild').'</th>
+            <th>'.__('Role', 'wowpi-guild').'</th>
+            <th>'.__('Level', 'wowpi-guild').'</th>
+            <th>'.__('Guild Rank', 'wowpi-guild').'</th>
         </tr>
     </thead>
     <tfoot>
         <tr>
-            <th>Name</th>
-            <th>Race</th>
-            <th>Class</th>
-            <th>Role</th>
-            <th>Level</th>
-            <th>Guild Rank</th>
+            <th>'.__('Name', 'wowpi-guild').'</th>
+            <th>'.__('Race', 'wowpi-guild').'</th>
+            <th>'.__('Class', 'wowpi-guild').'</th>
+            <th>'.__('Role', 'wowpi-guild').'</th>
+            <th>'.__('Level', 'wowpi-guild').'</th>
+            <th>'.__('Guild Rank', 'wowpi-guild').'</th>
         </tr>
     </tfoot></table>';
+		//$output .= '<script>jQuery(document).ready(function($){$("#'.$tableId.'").DataTable({'.$datatable_settings.'});});</script>';
 		return $output;
 	}
 

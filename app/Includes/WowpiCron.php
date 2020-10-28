@@ -78,14 +78,20 @@ class WowpiCron {
 		$characterSummary = $connector->summary( $characterName );
 
 		if ( ! $characterSummary ) {
+			// SET STATUS INACTIVE
+
 			global $wpdb;
 			$time              = time();
 			$mysql_time_format = "Y-m-d H:i:s";
 			$post_modified     = gmdate( $mysql_time_format, $time );
 			$post_modified_gmt = gmdate( $mysql_time_format, ( $time + get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ) );
-			$wpdb->query( "UPDATE $wpdb->posts SET post_modified = '{$post_modified}', post_modified_gmt = '{$post_modified_gmt}'  WHERE ID = {$characterPost->ID}" );
+			$wpdb->query( "UPDATE $wpdb->posts SET post_modified = '{$post_modified}', post_modified_gmt = '{$post_modified_gmt}', post_status = 'draft'  WHERE ID = {$characterPost->ID}" );
+
 			return 'not updated - maybe not playing';
 		}
+
+		// MAKE SURE STATUS IS ACTIVE
+		$this->addTaxonomyTerm($characterPost->ID, 'wowpi_guild_character_status', 'Active', 'active');
 
 		$characterPost->post_title = $characterSummary['name'];
 		$characters[] = $characterSummary['name'];

@@ -1,0 +1,54 @@
+@import url(./../../../node_modules/datatables.net-dt/css/jquery.dataTables.min.css);
+#wowpi_guild_roster, #wowpi_guild_roster caption, #wowpi_guild_roster tbody, #wowpi_guild_roster tfoot, #wowpi_guild_roster thead, #wowpi_guild_roster tr, #wowpi_guild_roster th, #wowpi_guild_roster td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+#wowpi_guild_roster {
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: #000000; }
+  #wowpi_guild_roster tr {
+    border-bottom: 1px solid #ccc; }
+  #wowpi_guild_roster tbody tr {
+    background-color: #000000; }
+    #wowpi_guild_roster tbody tr:nth-child(odd) {
+      background: #353535; }
+  #wowpi_guild_roster th, #wowpi_guild_roster td {
+    text-align: left;
+    padding: 4px;
+    vertical-align: middle;
+    line-height: 1; }
+  #wowpi_guild_roster th {
+    font-weight: bold;
+    color: #f8b700; }
+  #wowpi_guild_roster td {
+    color: #b1997f; }
+    #wowpi_guild_roster td .icon {
+      position: relative;
+      display: block;
+      width: 38px;
+      height: 38px;
+      z-index: 1; }
+      #wowpi_guild_roster td .icon::before {
+        content: url("../../../assets/icon/border-medium.png");
+        position: absolute;
+        top: -3px;
+        display: block;
+        width: 38px;
+        height: 38px;
+        z-index: 2; }
+      #wowpi_guild_roster td .icon img {
+        margin: 3px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%; }
+      #wowpi_guild_roster td .icon:hover::before {
+        content: url("../../../assets/icon/border-medium-hover.png"); }
+
+.dataTables_length, .dataTables_filter {
+  display: inline-block;
+  width: 50%; }

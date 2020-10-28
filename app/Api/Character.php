@@ -29,11 +29,11 @@ class Character extends Connector {
 		$response = $this->retrieveData($endpoint);
 
 		if(! $response || ! array_key_exists('id', $response)) {
-			error_log('Weird...' . $endpoint);
+			//error_log('Weird...' . $endpoint);
 			return false;
 		}
 
-		return array(
+		$characterData =  array(
 			'id' => $response['id'],
 			'name' => $response['name'],
 			'gender' => $response['gender'],
@@ -70,12 +70,17 @@ class Character extends Connector {
 			'last_login' => $response['last_login_timestamp'],
 			'average_item_level' => $response['average_item_level'],
 			'equipped_item_level' => $response['equipped_item_level'],
-			'active_title' => array(
+		);
+
+		if(array_key_exists('active_title', $response)) {
+			$characterData['active_title'] = array(
 				'id' => $response['active_title']['name'],
 				'name' => $response['active_title']['name'],
 				'display_string' => $response['active_title']['display_string'],
-			),
-		);
+			);
+		}
+
+		return $characterData;
 	}
 
 	public function media($characterName, $realmSlug = null) {
@@ -91,11 +96,22 @@ class Character extends Connector {
 
 		$response = $this->retrieveData($endpoint);
 
-		$medias = array(
-			'avatar' => $response['avatar_url'],
-			'bust' => $response['bust_url'],
-			'render' => $response['render_url'],
-		);
+		if(array_key_exists('assets', $response)) {
+			$medias = array();
+			$newAssetStructure = array('avatar' => 'avatar', 'inset' => 'bust', 'main' => 'render');
+			foreach($response['assets'] as $asset) {
+				$medias[$newAssetStructure[$asset['key']]] = $asset['value'];
+			}
+		}
+
+		else {
+
+			$medias = array(
+				'avatar' => $response['avatar_url'],
+				'bust'   => $response['bust_url'],
+				'render' => $response['render_url'],
+			);
+		}
 
 		$importedImages = array();
 		foreach($medias as $key => $mediaUrl) {
