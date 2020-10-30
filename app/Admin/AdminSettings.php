@@ -126,9 +126,7 @@ class AdminSettings {
 			<?php settings_errors(); ?>
 
 			<?php if( isset( $_GET[ 'tab' ] ) ) {
-				$active_tab = $_GET[ 'tab' ];
-			} elseif( isset($_GET['tab']) && $_GET['tab'] == 'synchronizing_section') {
-				$active_tab == 'synchronizing_section';
+				$active_tab = sanitize_text_field($_GET[ 'tab' ]);
 			} else {
 				$active_tab = 'credential_section';
 			} // end if/else ?>
@@ -262,24 +260,22 @@ class AdminSettings {
 			add_settings_error( 'wowpi_guild', '', 'There\'s nothing to save' );
 		}
 
-		$credentials = filter_var_array($input, FILTER_SANITIZE_STRING);
-
 		// check if client id exists
-		if(! $credentials['client_id']) {
+		if(! $input['client_id']) {
 			add_settings_error( 'wowpi_guild', '', 'You didn\'t provide Client ID connection credentials received from Battle.net Developer Portal' );
 		}
-		$this->credentials['client_id'] = $credentials['client_id'];
+		$this->credentials['client_id'] = $input['client_id'];
 
 		// check if client secret exists
-		if(! $credentials['client_secret']) {
+		if(! $input['client_secret']) {
 			add_settings_error( 'wowpi_guild', '', 'You didn\'t provide Client secret connection credentials received from Battle.net Developer Portal' );
 		}
-		$this->credentials['client_secret'] = $credentials['client_secret'];
+		$this->credentials['client_secret'] = $input['client_secret'];
 
-		if( ! array_key_exists($credentials['game'], $this->games)) {
+		if( ! array_key_exists($input['game'], $this->games)) {
 			add_settings_error( 'wowpi_guild', '', 'You must select a proper World of Warcraft game' );
 		}
-		$this->credentials['game'] = $credentials['game'];
+		$this->credentials['game'] = $input['game'];
 
 		// check for curl support
 		if(in_array('curl', get_loaded_extensions())) {
@@ -300,17 +296,17 @@ class AdminSettings {
 			add_settings_error('client_id', '', 'The Client ID and Client secret have been verified on Blizzard\'s Battle.net.', 'success');
 		}
 
-		if( ! array_key_exists($credentials['region'], $this->regions)) {
+		if( ! array_key_exists($input['region'], $this->regions)) {
 			$getRealms = false;
 			add_settings_error( 'region', '', 'You must select a proper World of Warcraft Region' );
 		}
-		$this->credentials['region'] = $credentials['region'];
+		$this->credentials['region'] = $input['region'];
 
-		if( ! array_key_exists($credentials['locale'], $this->locales)) {
+		if( ! array_key_exists($input['locale'], $this->locales)) {
 			$getRealms = false;
 			add_settings_error( 'locale', '', 'You must select a proper World of Warcraft locale' );
 		}
-		$this->credentials['locale'] = $credentials['locale'];
+		$this->credentials['locale'] = $input['locale'];
 
 		if($getRealms) {
 			$realmConnector = new Realm($this->credentials);

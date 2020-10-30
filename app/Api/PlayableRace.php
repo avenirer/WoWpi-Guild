@@ -36,7 +36,7 @@ class PlayableRace extends Connector {
 
 	public function getRace($playableRaceId) {
 
-		$playableRaceId = filter_var($playableRaceId, FILTER_SANITIZE_STRING);
+		$playableRaceId = sanitize_text_field($playableRaceId);
 
 		$endpoint = $this->getDomain().'/data/wow/playable-race/'.$playableRaceId.'?namespace='.$this->getNamespace('static').'&locale='.$this->locale.'&access_token='.$this->getToken();
 

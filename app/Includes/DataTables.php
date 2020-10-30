@@ -13,8 +13,8 @@ class DataTables {
 		foreach($fieldNames as $key => $field) {
 			$fields[$key] = $field['data'];
 		}
-		$offset = filter_var($_REQUEST['start'], FILTER_SANITIZE_NUMBER_INT);
-		$limit = filter_var($_REQUEST['length'], FILTER_SANITIZE_NUMBER_INT);
+		$offset = intval(sanitize_text_field($_REQUEST['start']));
+		$limit = intval(sanitize_text_field($_REQUEST['length']));
 
 		$args = array(
 			'post_type' => 'wowpi_guild_member',
@@ -25,13 +25,13 @@ class DataTables {
 		);
 
 		if($_REQUEST['search']['value']) {
-			$args['s'] = filter_var($_REQUEST['search']['value'], FILTER_SANITIZE_STRING);
+			$args['s'] = sanitize_text_field($_REQUEST['search']['value']);
 		}
 
 		if(array_key_exists('ranks', $_REQUEST)) {
 			$ranks = array();
 			$rankValues = array();
-			$guildRanks = filter_var( $_REQUEST['ranks'], FILTER_SANITIZE_STRING );
+			$guildRanks = sanitize_text_field( $_REQUEST['ranks'] );
 			$ranksArr = explode('|', $guildRanks);
 			foreach($ranksArr as $rank) {
 				$rankDef = explode(':', $rank);
@@ -49,7 +49,7 @@ class DataTables {
 			}
 		}
 
-		$order = filter_var_array($_REQUEST['order'], FILTER_SANITIZE_STRING);
+		$order = sanitize_text_field($_REQUEST['order']);
 
 		$orderBy = array();
 		if(!empty($order)) {
@@ -136,14 +136,6 @@ class DataTables {
 		echo json_encode($json_data);
 
 		die();
-
-
-
-		echo 'bau';
-		exit;
-
-		echo 'bau';
-		exit;
 	}
 
 

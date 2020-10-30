@@ -12,15 +12,15 @@ class Character extends Connector {
 	}
 
 	public function setRealmSlug($realmSlug) {
-		$this->realmSlug = filter_var($realmSlug, FILTER_SANITIZE_STRING);
+		$this->realmSlug = sanitize_text_field($realmSlug);
 	}
 
 	public function summary($characterName, $realmSlug = null) {
 
-		$characterName = filter_var($characterName, FILTER_SANITIZE_STRING);
+		$characterName = sanitize_text_field($characterName);
 
 		if(isset($realmSlug)) {
-			$this->realmSlug = filter_var($realmSlug, FILTER_SANITIZE_STRING);
+			$this->realmSlug = sanitize_text_field($realmSlug);
 		}
 
 		//https://eu.api.blizzard.com/profile/wow/character/defias-brotherhood/shadoweaver?namespace=profile-eu&locale=en_US&access_token=USwOm7LCbQk562Vk2lwI8L0YqtgPJBdL4h
@@ -85,10 +85,10 @@ class Character extends Connector {
 
 	public function media($characterName, $realmSlug = null) {
 
-		$characterName = filter_var($characterName, FILTER_SANITIZE_STRING);
+		$characterName = sanitize_text_field($characterName);
 
 		if(isset($realmSlug)) {
-			$this->realmSlug = filter_var($realmSlug, FILTER_SANITIZE_STRING);
+			$this->realmSlug = sanitize_text_field($realmSlug);
 		}
 
 		//https://eu.api.blizzard.com/profile/wow/character/ravenholdt/toastzor/character-media?namespace=profile-eu&locale=en_US&access_token=USB2nL3kX7w0uDL8Qzs7F3pPfyRO8q2lWv

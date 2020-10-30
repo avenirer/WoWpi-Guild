@@ -38,7 +38,7 @@ class PlayableSpecialization extends Connector {
 
 	public function getClassSpecializations($playableClassId) {
 
-		$playableClassId = filter_var($playableClassId, FILTER_SANITIZE_STRING);
+		$playableClassId = sanitize_text_field($playableClassId);
 
 		$class = Settings::getClass($playableClassId);
 

@@ -13,7 +13,7 @@ class ImageManipulation {
 
 	public function setSource($imageSource)
 	{
-		$imageSource = filter_var($imageSource, FILTER_SANITIZE_URL);
+		$imageSource = esc_url_raw($imageSource);
 		$this->image->source = $imageSource;
 		$imageSourceArr = explode('/', $imageSource);
 		$this->image->name = $imageSourceArr[sizeof($imageSourceArr)-1];

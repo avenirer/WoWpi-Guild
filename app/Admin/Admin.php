@@ -5,7 +5,7 @@ use WowpiGuild\Api\PlayableClass;
 use WowpiGuild\Api\PlayableRace;
 use WowpiGuild\Api\PlayableSpecialization;
 use WowpiGuild\Config\Settings;
-use WowpiGuild\Includes\Connector;
+//use WowpiGuild\Includes\Connector;
 
 /**
  * The admin-specific functionality of the plugin.
@@ -126,7 +126,7 @@ class Admin {
 			'achievements'
 		);
 
-		$retrieve = filter_var($_REQUEST['retrieve'], FILTER_SANITIZE_STRING);
+		$retrieve = sanitize_text_field($_REQUEST['retrieve']);
 
 		if( ! in_array($retrieve, $available_operations)) {
 			echo 'Zug-zug';
@@ -134,7 +134,7 @@ class Admin {
 		}
 
 		if($retrieve == 'specializations') {
-			$classId = filter_var($_REQUEST['classId'], FILTER_SANITIZE_NUMBER_INT);
+			$classId = intval(sanitize_text_field($_REQUEST['classId']));
 			$result = $this->importRemoteSpecs($classId);
 		}
 		elseif($retrieve == 'classes') {
@@ -144,7 +144,7 @@ class Admin {
 			$result = $this->getRemoteAchievementCategories();
 		}
 		elseif($retrieve == 'achievements') {
-			$categoryId = filter_var($_REQUEST['categoryId'], FILTER_SANITIZE_NUMBER_INT);
+			$categoryId = intval( sanitize_text_field($_REQUEST['categoryId']));
 			$result = $this->importRemoteAchievements($categoryId);
 		}
 		else {
@@ -205,6 +205,7 @@ class Admin {
 		);
 	}
 
+	/*
 	private function getRemoteAchievementCategories() {
 
 		$connector = new Connector();
@@ -218,6 +219,7 @@ class Admin {
 			),
 		);
 	}
+	*/
 
 	private function importRemoteClass($classId) {
 
@@ -267,7 +269,7 @@ class Admin {
 
 	private function importRemoteSpecs($classId) {
 
-		$classId = filter_var($classId, FILTER_SANITIZE_NUMBER_INT);
+		$classId = intval(sanitize_text_field($classId));
 		$classTerm = $this->importRemoteClass($classId);
 		if( ! $classTerm) {
 			error_log('A remote class could not be imported!');
@@ -313,6 +315,7 @@ class Admin {
 
 	}
 
+	/*
 	private function importRemoteAchievements($categoryId) {
 
 		$categoryConnector = new Connector();
@@ -374,5 +377,7 @@ class Admin {
 		update_field( 'achievement_data', json_encode($achievement), 'wowpi_guild_achievement_' . $achievement_term_id );
 
 	}
+
+	*/
 
 }

@@ -29,10 +29,10 @@ class Shortcodes {
 			'linkto' => 'simple',
 		), $atts );
 
-		$tableId = filter_var($pull_guild_atts['id'], FILTER_SANITIZE_STRING);
-		$tableClass = filter_var($pull_guild_atts['class'], FILTER_SANITIZE_STRING);
-		$rows = filter_var($pull_guild_atts['rows'], FILTER_SANITIZE_STRING);
-		$ranks = filter_var($pull_guild_atts['ranks'], FILTER_SANITIZE_STRING);
+		$tableId = sanitize_html_class($pull_guild_atts['id']);
+		$tableClass = sanitize_html_class($pull_guild_atts['class']);
+		$rows = sanitize_text_field($pull_guild_atts['rows']);
+		$ranks = sanitize_text_field($pull_guild_atts['ranks']);
 
 		$ajaxUrl = admin_url('admin-ajax.php?action=getRoster');
 
@@ -69,7 +69,8 @@ class Shortcodes {
             ),
         );
 
-		wp_enqueue_script( 'wowpi-guild-roster', Settings::pluginUrl() . 'dist/public/js/wowpi-guild-roster.js', array( 'jquery' ), $this->version, true );
+        wp_enqueue_style('wowpi-guild-roster', Settings::pluginUrl() . 'dist/public/css/wowpi-guild-roster.css', array('main'), WOWPI_GUILD_VERSION);
+		wp_enqueue_script( 'wowpi-guild-roster', Settings::pluginUrl() . 'dist/public/js/wowpi-guild-roster.js', array( 'jquery' ), WOWPI_GUILD_VERSION, true );
 		wp_localize_script( 'wowpi-guild-roster', 'wowpiRosterAjax', array(
 			'datatable_id' => $tableId,
 			'datatable_class' => $tableClass,
@@ -78,8 +79,7 @@ class Shortcodes {
 			'columns' => json_encode($columns)
 		) );
 
-		$output = '<link rel="stylesheet" type="text/css" href="' . Settings::pluginUrl() . 'dist/public/css/wowpi-guild-roster.css">';
-		$output .= '<table id="wowpi_guild_roster">
+		$output = '<table id="wowpi_guild_roster">
     <thead>
         <tr>
             <th>'.__('Name', 'wowpi-guild').'</th>

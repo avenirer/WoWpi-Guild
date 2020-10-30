@@ -12,7 +12,7 @@ class Realm extends Connector {
 	}
 
 	public function setRealmSlug($realmSlug) {
-		$this->realmSlug = filter_var($realmSlug, FILTER_SANITIZE_STRING);
+		$this->realmSlug = sanitize_text_field($realmSlug);
 	}
 
 	public function index() {

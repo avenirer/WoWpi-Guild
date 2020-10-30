@@ -120,8 +120,8 @@ class FrontEnd {
 			'character'
 		);
 
-		$retrieve = filter_var($_REQUEST['retrieve'], FILTER_SANITIZE_STRING);
-		$forced = filter_var($_REQUEST['forced'], FILTER_VALIDATE_BOOLEAN);
+		$retrieve = intval(sanitize_text_field($_REQUEST['retrieve']));
+		$forced = boolval(sanitize_text_field($_REQUEST['forced']));
 
 		if( ! in_array($retrieve, $available_operations)) {
 			echo 'Zug-zug';
@@ -132,8 +132,8 @@ class FrontEnd {
 			$result = $this->importRemoteGuild($forced);
 		}
 		elseif($retrieve == 'character') {
-			$characterId = filter_var($_REQUEST['characterId'], FILTER_SANITIZE_STRING);
-			$synchAll = filter_var($_REQUEST['synchAll'], FILTER_VALIDATE_BOOLEAN);
+			$characterId = intval(sanitize_text_field($_REQUEST['characterId']));
+			$synchAll = boolval(sanitize_text_field($_REQUEST['synchAll']));
 			if(!$characterId) {
 				return false;
 			}

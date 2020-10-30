@@ -14,13 +14,13 @@ class Guild extends Connector {
 
 		$guildData  = Settings::getGuild();
 		if(isset($realmSlug)) {
-			$this->realmSlug = filter_var($realmSlug, FILTER_SANITIZE_STRING);
+			$this->realmSlug = sanitize_text_field($realmSlug);
 		}
 		elseif(array_key_exists('realm_slug', $guildData)) {
 			$this->realmSlug = $guildData['realm_slug'];
 		}
 		if(isset($nameSlug)) {
-			$this->nameSlug = filter_var($nameSlug, FILTER_SANITIZE_STRING);
+			$this->nameSlug = sanitize_text_field($nameSlug);
 		}
 		elseif (array_key_exists('slug', $guildData)) {
 			$this->nameSlug = $guildData['slug'];

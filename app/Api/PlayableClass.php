@@ -38,7 +38,7 @@ class PlayableClass extends Connector {
 
 	public function getClass($playableClassId) {
 
-		$playableClassId = filter_var($playableClassId, FILTER_SANITIZE_STRING);
+		$playableClassId = sanitize_text_field($playableClassId);
 
 		$endpoint = $this->getDomain().'/data/wow/playable-class/'.$playableClassId.'?namespace='.$this->getNamespace('static').'&locale='.$this->locale.'&access_token='.$this->getToken();
 
