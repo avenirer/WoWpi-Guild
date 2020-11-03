@@ -1,7 +1,7 @@
 {
   "name": "wowpi-guild",
   "version": "1.0.0",
-  "description": "=== Plugin Name === Contributors: Avenirer Donate link: https://wow-hunter.ro Tags: World of Warcraft, Armory, guild, roster, WoW Requires at least: 4.7 Tested up to: 5.4 Stable tag: 4.3 License: GPLv2 or later License URI: http://www.gnu.org/licenses/gpl-2.0.html",
+  "description": "=== WoWpi Guild === Contributors: Avenirer Donate link: https://wow-hunter.ro Tags: World of Warcraft, Armory, guild, roster, WoW Requires at least: 4.7 Tested up to: 5.4 Stable tag: 4.3 License: GPLv2 or later License URI: http://www.gnu.org/licenses/gpl-2.0.html",
   "main": "index.js",
   "scripts": {
     "start": "gulp",
