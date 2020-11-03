@@ -67,7 +67,7 @@ class AdminSettings {
 
 	private $games = array(
 	        'current' => 'World of Warcraft',
-	        'classic' => 'World of Warcraft Classic',
+	        //'classic' => 'World of Warcraft Classic',
     );
 
 	/**
