@@ -120,7 +120,7 @@ class FrontEnd {
 			'character'
 		);
 
-		$retrieve = intval(sanitize_text_field($_REQUEST['retrieve']));
+		$retrieve = sanitize_text_field($_REQUEST['retrieve']);
 		$forced = boolval(sanitize_text_field($_REQUEST['forced']));
 
 		if( ! in_array($retrieve, $available_operations)) {

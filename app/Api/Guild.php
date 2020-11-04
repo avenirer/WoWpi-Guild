@@ -12,7 +12,11 @@ class Guild extends Connector {
 
 		parent::__construct($credentials);
 
-		$guildData  = Settings::getGuild();
+		$guildData = array();
+		if(!isset($realmSlug) && !isset($nameSlug)) {
+			$guildData = Settings::getGuild();
+		}
+
 		if(isset($realmSlug)) {
 			$this->realmSlug = sanitize_text_field($realmSlug);
 		}
