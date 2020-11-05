@@ -58,7 +58,8 @@ Not yet, but it aims to be. With the help of your inputs, I will keep on working
 2. Once the members of your guild are imported from Battle.net, you can see them in the "Members" admin section. After that, the members will be updated each hour five at a time (of course, if the website is visited), or you can reimport the members from the admin section.
 
 == Changelog ==
-
+= 1.2.2 =
+* Quick fixes related to the launch of plugin on Wordpress.org repository
 = 1.0 =
 * The launching of the plugin
 
