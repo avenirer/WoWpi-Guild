@@ -1,6 +1,6 @@
 === Wowpi Guild ===
 Contributors: Avenirer
-Donate link: https://www.patreon.com/avenirer
+Donate link: https://www.patreon.com/wowpi
 Tags: World of Warcraft, Armory, guild, roster, WoW
 Requires at least: 4.7
 Tested up to: 5.4
@@ -50,7 +50,7 @@ No, this is a total different breed. It adds custom post types specific to chara
 
 = Is this de go to tool? =
 
-Not yet, but it aims to be. With the help of your inputs, I will keep on working on this plugin. Also, please become a patreon of my work (https://www.patreon.com/avenirer). 
+Not yet, but it aims to be. With the help of your inputs, I will keep on working on this plugin. Also, please become a patreon of my work (https://www.patreon.com/wowpi). 
 
 == Screenshots ==
 
