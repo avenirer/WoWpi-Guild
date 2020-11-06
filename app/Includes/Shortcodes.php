@@ -79,7 +79,7 @@ class Shortcodes {
 			'columns' => json_encode($columns)
 		) );
 
-		$output = '<table id="wowpi_guild_roster">
+		return '<table id="wowpi_guild_roster">
     <thead>
         <tr>
             <th>'.__('Name', 'wowpi-guild').'</th>
@@ -100,8 +100,6 @@ class Shortcodes {
             <th>'.__('Guild Rank', 'wowpi-guild').'</th>
         </tr>
     </tfoot></table>';
-		//$output .= '<script>jQuery(document).ready(function($){$("#'.$tableId.'").DataTable({'.$datatable_settings.'});});</script>';
-		return $output;
 	}
 
 }

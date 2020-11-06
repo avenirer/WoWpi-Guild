@@ -4,6 +4,7 @@ namespace WowpiGuild\Includes;
 use WowpiGuild\Admin\Admin;
 use WowpiGuild\Admin\AdminSettings;
 use WowpiGuild\Frontend\FrontEnd;
+use WowpiGuild\Widgets\Widgets;
 
 /**
  * The file that defines the core plugin class
@@ -88,6 +89,7 @@ class WowpiGuild {
 		$this->definePublicHooks();
 		$this->defineCronJobs();
 		$this->defineShortcodes();
+		$this->defineWidgets();
 
 	}
 
@@ -204,6 +206,11 @@ class WowpiGuild {
 		$shortcodes = new Shortcodes();
 		$this->loader->add_action('init', $shortcodes, 'init' );
 
+	}
+
+	private function defineWidgets() {
+		$widgets = new Widgets();
+		$this->loader->add_action('widgets_init', $widgets, 'init');
 	}
 
 	/**

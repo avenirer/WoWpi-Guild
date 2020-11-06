@@ -1,4 +1,4 @@
-=== Wowpi Guild ===
+=== WoWpi Guild ===
 Contributors: Avenirer
 Donate link: https://www.patreon.com/wowpi
 Tags: World of Warcraft, Armory, guild, roster, WoW
@@ -42,6 +42,10 @@ If you are a developer, or know a thing or two about creating templates for cust
 
 Later on, I will concentrate on that part by making default templates that will allow any admins to have an idea about how they can change the pages themselves.
 
+= Recruitment widget =
+
+Do you need to increase your ranks with specific classes and/or specializations. You can use the new WoWpi Recruitment Widget in order to tell the world what are your guild's needs.
+
 == Frequently Asked Questions ==
 
 = Is this plugin a new version of WoWpi plugin ? =
@@ -55,9 +59,11 @@ Not yet, but it aims to be. With the help of your inputs, I will keep on working
 == Screenshots ==
 
 1. After you activate the plugin and register to Battle.net Developer website, you must set up the plugin.
-2. Once the members of your guild are imported from Battle.net, you can see them in the "Members" admin section. After that, the members will be updated each hour five at a time (of course, if the website is visited), or you can reimport the members from the admin section.
+2. Once the members of your guild are imported from Battle.net, you can see them in the "Members" admin section. After that, the members will be updated each hour five at a time (of course, if the website is visited), or you can reimport the members from the admin section. If something doesn't work, make sure you've synchronized the classes and specializations in the WoWpi Guild settings section (step 3).
 
 == Changelog ==
+= 1.3.0 =
+* Added recruitment widget
 = 1.2.2 =
 * Quick fixes related to the launch of plugin on Wordpress.org repository
 = 1.0 =

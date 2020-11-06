@@ -1,3 +1,33 @@
-body {
-  backgroud:red;
+.wowpi-guild-widget-classes-container, .wowpi-guild-widget-class {
+  display: block;
+  text-align:center;
+  h3 {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-size: 10px;
+  }
+}
+.wowpi-guild-widget-spec {
+  background-color:#000;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 1px;
+  border: 3px solid silver;
+  border-radius: 3px;
+  background-size:contain;
+  opacity: .5;
+  &.needed {
+    border-color: #f8b700;
+    opacity: 1;
+  }
+  &.important {
+    border-color: #c41e3b;
+    opacity: 1;
+  }
+  img {
+
+  }
+
 }

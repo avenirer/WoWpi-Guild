@@ -110,7 +110,7 @@ body.toplevel_page_wowpi_guild_settings input:not([type=submit]):not([type=check
     height: 80px; }
     .synch-results.loading .lds-ripple div {
       position: absolute;
-      border: 4px solid #0b278d;
+      border: 2px solid #0b278d;
       opacity: 1;
       border-radius: 50%;
       animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite; }
@@ -130,3 +130,27 @@ body.toplevel_page_wowpi_guild_settings input:not([type=submit]):not([type=check
     width: 72px;
     height: 72px;
     opacity: 0; } }
+
+.wowpi-guild-recruitment-select .class-name {
+  text-align: center;
+  line-height: 1;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 5px 0 2px; }
+
+.wowpi-guild-recruitment-select ul {
+  margin-top: 0;
+  display: flex; }
+  .wowpi-guild-recruitment-select ul li {
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 30px 30px;
+    padding-left: 34px;
+    padding-right: 5px;
+    flex: 1 0 0;
+    text-align: left;
+    margin-bottom: 0; }
+    .wowpi-guild-recruitment-select ul li select {
+      line-height: 1;
+      min-height: 20px;
+      font-size: 12px; }
