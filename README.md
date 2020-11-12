@@ -1,7 +1,7 @@
 === WoWpi Guild ===
 Contributors: Avenirer
 Donate link: https://www.patreon.com/wowpi
-Tags: World of Warcraft, Armory, guild, roster, WoW
+Tags: World of Warcraft, Armory, guild, roster, WoW, recruitment
 Requires at least: 4.7
 Tested up to: 5.4
 Stable tag: 4.3
