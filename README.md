@@ -17,6 +17,15 @@ This plugin started from an older plugin named WoWpi. That plugin was developped
 
 This time I am working on a plugin that revolves around guilds in World of Warcraft. I hope it will evolve further, becoming the go to tool for a guild's website needs.
 
+= Highlights =
+
+**Guild Roster**
+
+**Character post types**
+
+**Recruitment Widget**
+
+
 == Installation ==
 
 = Roster =
@@ -58,8 +67,13 @@ Not yet, but it aims to be. With the help of your inputs, I will keep on working
 
 == Screenshots ==
 
-1. After you activate the plugin and register to Battle.net Developer website, you must set up the plugin.
-2. Once the members of your guild are imported from Battle.net, you can see them in the "Members" admin section. After that, the members will be updated each hour five at a time (of course, if the website is visited), or you can reimport the members from the admin section. If something doesn't work, make sure you've synchronized the classes and specializations in the WoWpi Guild settings section (step 3).
+1. Register for a developer account on Battle.net, and create a client in order to use the data about your guild.
+2. Once you've created the client, you will receive a client ID and client secret that you must pass to the plugin settings.
+3. After you activate the plugin you should go to the plugin's settings page, at step 1 and put the Client ID and Client secret, and also the region and locale (language). Now push the "Save changes" button. If everything works ok, you should receive a confirmation message.
+4. On step 2 of the WoWpi Guild settings you must mention the region and also the guild slug that appears on the roster page in the guild page on World of Warcraft.
+5. On step 3, you should synchronize the races, classes and specializations, and the guild roster. Make sure that the checkbox "Synch with all character data" is also checked.
+6. Once you've synchronize all data, you can see the "Members" admin section. The members are organized by races, classes, specializations, genders and play status.
+7. After activating the plugin, the members will be updated each hour five at a time (of course, if the website is visited), or you can reimport the members from the admin section. If something doesn't work, make sure you've synchronized the classes and specializations in the WoWpi Guild settings section (step 3). Also, the members that were not active lately in game, will be automatically set to Draft and set as inactive.
 
 == Changelog ==
 = 1.3.0 =
