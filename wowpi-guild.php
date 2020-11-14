@@ -10,14 +10,14 @@ require_once('vendor/autoload.php');
  * that starts the plugin.
  *
  * @link              https://wow-hunter.ro
- * @since             1.3.5
+ * @since             1.3.6
  * @package           Wowpi_Guild
  *
  * @wordpress-plugin
  * Plugin Name:       WoWpi Guild
  * Plugin URI:        wowpi-guild
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.3.5
+ * Version:           1.3.6
  * Author:            Adrian Voicu - Avenirer
  * Author URI:        https://wow-hunter.ro
  * License:           GPL-2.0+
@@ -63,7 +63,7 @@ function my_acf_settings_show_admin( $show_admin ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'WOWPI_GUILD_VERSION', '1.3.4' );
+define( 'WOWPI_GUILD_VERSION', '1.3.6' );
 define( 'WOWPI_GUILD_NAME', 'wowpi-guild');
 
 /**
