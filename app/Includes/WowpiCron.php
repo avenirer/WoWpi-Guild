@@ -24,7 +24,9 @@ class WowpiCron {
 
 	public function updateMembers() {
 
-
+		if(!get_option('wowpi_guild_guild')) {
+			return true;
+		}
 
 		$args = array(
 			'post_type' => 'wowpi_guild_member',

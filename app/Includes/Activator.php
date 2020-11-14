@@ -31,7 +31,7 @@ class Activator {
 	 */
 	public static function activate() {
 
-		self::add_default_options();
+		//self::add_default_options();
 		//self::create_directories();
 
 	}
