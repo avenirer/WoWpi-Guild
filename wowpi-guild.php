@@ -10,14 +10,14 @@ require_once('vendor/autoload.php');
  * that starts the plugin.
  *
  * @link              https://wow-hunter.ro
- * @since             1.3.4
+ * @since             1.3.5
  * @package           Wowpi_Guild
  *
  * @wordpress-plugin
  * Plugin Name:       WoWpi Guild
  * Plugin URI:        wowpi-guild
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.3.4
+ * Version:           1.3.5
  * Author:            Adrian Voicu - Avenirer
  * Author URI:        https://wow-hunter.ro
  * License:           GPL-2.0+
