@@ -124,20 +124,20 @@ class Connector {
 			if ( is_wp_error( $response ) ) {
 				$error_message = 'Something went wrong while trying to get token: ' . $response->get_error_message();
 				error_log($error_message);
-				throw new Exception($error_message);
+				throw new \Exception($error_message);
 			}
 
 			$response_body = wp_remote_retrieve_body( $response );
 			$response_body = json_decode( $response_body, true );
 
 			if(!array_key_exists('access_token', $response_body)) {
-				throw new Exception('No access code was retrieved: ' . $response_body['error_description']);
+				throw new \Exception('No access code was retrieved: ' . $response_body['error_description']);
 			}
 
 			return $response_body['access_token'];
 
 		}
-		catch(Exception $exception) {
+		catch(\Exception $exception) {
 			echo $exception->getMessage();
 			error_log($exception->getMessage());
 			return false;
