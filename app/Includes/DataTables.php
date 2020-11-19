@@ -84,16 +84,20 @@ class DataTables {
 				$rosterQuery->the_post();
 
 				$characterRaces = get_the_terms(get_the_ID(), 'wowpi_guild_race');
-				$race = '';
+				$race = 'none';
 				if($characterRaces) {
-					$race = $characterRaces[0];
+					$raceTerm = $characterRaces[0];
+					$race = $raceTerm->name;
+					$race_id = get_field('bnet_id', 'wowpi_guild_race_'. $raceTerm->term_id);
 				}
 
 				$characterGenders = get_the_terms(get_the_ID(), 'wowpi_guild_gender');
 				$gender = 'male';
+				$gender_id = 'male';
 				if($characterGenders) {
 					$genderTerm = $characterGenders[0];
-					$gender = $genderTerm->slug;
+					$gender = $genderTerm->name;
+					$gender_id = strtolower(get_field('wowpi_guild_gender_type', 'wowpi_guild_gender_'.$genderTerm->term_id));
 				}
 
 				$characterClasses = get_the_terms(get_the_ID(), 'wowpi_guild_class_spec');
@@ -103,18 +107,34 @@ class DataTables {
 					foreach($characterClasses as $classTerm) {
 						if($classTerm->parent == 0) {
 							$class = $classTerm->name;
+							$class_id = get_field('bnet_id', 'wowpi_guild_class_spec_'.$classTerm->term_id);
 						}
 						else {
 							$role = get_field('wowpi_guild_spec_role', 'wowpi_guild_class_spec_'.$classTerm->term_id);
+							$role_type = get_field('wowpi_guild_spec_role_type', 'wowpi_guild_class_spec_'.$classTerm->term_id);
 						}
 					}
 				}
 
 				$character         = array();
 				$character['name'] = get_the_title();
-				$character['race'] = array('race' => strtolower(str_replace(array(' ', '\''), '', $race->name)), 'gender' => $gender);
-				$character['class'] = str_replace(' ', '_', strtolower($class));
-				$character['role'] = strtolower($role);
+				$character['race'] = array('name' => $race, 'icon' =>'');
+				if(isset($race_id) && isset($gender_id)) {
+					$character['race']['icon'] = $race_id . '_' . $gender_id;
+					unset($race_id);
+					unset($gender_id);
+				}
+
+				$character['class'] = array('name' => $class, 'id' => '');
+				if(isset($class_id)) {
+					$character['class']['id'] = $class_id;
+					unset($class_id);
+				}
+				$character['role'] = array('name' => $role, 'id' => '');
+				if(isset($role_type)) {
+					$character['role']['type'] = strtolower($role_type);
+					unset($role_type);
+				}
 				$character['level'] = get_field('character_level', get_the_ID());
 				$rank = intval(get_field('guild_rank', get_the_ID()));
 				$character['rank'] = (isset($ranks) && array_key_exists($rank, $ranks)) ? $ranks[$rank] : $rank;

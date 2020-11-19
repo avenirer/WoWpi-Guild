@@ -51,6 +51,7 @@ class PlayableSpecialization extends Connector {
 					'id' => $response['id'],
 					'name' => $response['name'],
 					'role' => $response['role']['name'],
+					'role_type' => $response['role']['type'],
 					'male_description' => nl2br($response['gender_description']['male']),
 					'female_description' => nl2br($response['gender_description']['female']),
 				);

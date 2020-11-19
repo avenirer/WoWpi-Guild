@@ -77,6 +77,9 @@ Not yet, but it aims to be. With the help of your inputs, I will keep on working
 
 == Changelog ==
 
+= 1.3.8 =
+* Fixed roster images for classes and specs and roles in different languages than english
+* Small fixes related to where the images are saved and some changes to image names themselves
 = 1.3.5 =
 * Fixed error on activation of plugin. Thank you, https://wordpress.org/support/topic/critical-error-crashes-website/
 = 1.3.0 =

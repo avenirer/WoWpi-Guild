@@ -1,6 +1,8 @@
 <?php
 namespace WowpiGuild\Api;
 
+use WowpiGuild\Includes\ImageManipulation;
+
 class Connector {
 
 	protected $client_id;

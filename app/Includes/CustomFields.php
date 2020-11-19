@@ -18,6 +18,7 @@ class CustomFields {
 		if(function_exists('acf_add_local_field_group')) {
 			$this->bnetIdField();
 			$this->maleFemaleFields();
+			$this->genderFields();
 			$this->classSpecFields();
 			$this->achievementFields();
 			$this->memberFields();
@@ -176,6 +177,46 @@ class CustomFields {
 		));
 	}
 
+	private function genderFields() {
+		acf_add_local_field_group(array(
+			'key' => 'group_wowpi_guild_gender_custom_fields',
+			'title' => '',
+			'fields' => array(
+				array(
+					'key' => 'field_wowpi_guild_gender_type',
+					'label' => 'Gender type',
+					'name' => 'wowpi_guild_gender_type',
+					'type' => 'text',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+				),
+			),
+			'location' => array(
+				array(
+					array(
+						'param' => 'taxonomy',
+						'operator' => '==',
+						'value' => 'wowpi_guild_gender',
+					),
+				),
+			),
+			'menu_order' => 0,
+			'position' => 'normal',
+			'style' => 'default',
+			'label_placement' => 'top',
+			'instruction_placement' => 'label',
+			'hide_on_screen' => '',
+			'active' => true,
+			'description' => '',
+		));
+	}
+
 	private function classSpecFields() {
 
 			acf_add_local_field_group(array(
@@ -207,6 +248,27 @@ class CustomFields {
 						'key' => 'field_wowpi_guild_spec_role',
 						'label' => 'Role',
 						'name' => 'wowpi_guild_spec_role',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'min' => '',
+						'max' => '',
+						'step' => '',
+					),
+					array(
+						'key' => 'field_wowpi_guild_spec_role_type',
+						'label' => 'Role type',
+						'name' => 'wowpi_guild_spec_role_type',
 						'type' => 'text',
 						'instructions' => '',
 						'required' => 0,

@@ -300,6 +300,7 @@ class Admin {
 				update_field( 'bnet_id', $spec['id'], 'wowpi_guild_class_spec_' . $spec_term_id );
 				update_field('wowpi_guild_power_type', $aboutClass['power_type'], 'wowpi_guild_class_spec_'.$spec_term_id);
 				update_field('wowpi_guild_spec_role', $spec['role'],'wowpi_guild_class_spec_'.$spec_term_id);
+				update_field('wowpi_guild_spec_role_type', $spec['role_type'],'wowpi_guild_class_spec_'.$spec_term_id);
 				update_field('wowpi_guild_spec_description_male', $spec['male_description'], 'wowpi_guild_class_spec_'.$spec_term_id);
 				update_field('wowpi_guild_spec_description_female', $spec['female_description'], 'wowpi_guild_class_spec_'.$spec_term_id);
 				update_field('wowpi_guild_spec_talent_tiers', json_encode($spec['talent_tiers']), 'wowpi_guild_class_spec_'.$spec_term_id);

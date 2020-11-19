@@ -16,21 +16,21 @@ $(document).ready( function () {
                 {
                     'data': 'race',
                     'render': function (data, type, row) {
-                        return '<div class="icon"><img src="/wp-content/plugins/wowpi-guild/assets/icon/race_' + data.race + '_' + data.gender + '.jpg" /></div>';
+                        return '<div class="icon"><img src="/wp-content/plugins/wowpi-guild/assets/icon/race_' + data.icon + '.jpg" alt="' + data.name + '" /></div>';
                     },
                     'sortable': false,
                 },
                 {
                     'data': 'class',
                     'render': function(data, type, row) {
-                        return '<div class="icon"><img src="/wp-content/plugins/wowpi-guild/assets/icon/classicon_' + data + '.jpg" /></div>';
+                        return '<div class="icon"><img src="/wp-content/plugins/wowpi-guild/assets/icon/classicon_' + data.id + '.jpg" alt="' + data.name + '" /></div>';
                     },
                     'sortable': false,
                 },
                 {
                     'data': 'role',
                     'render': function (data, type, row) {
-                        return '<div class="icon"><img src="/wp-content/plugins/wowpi-guild/assets/icon/role_' + data + '.png' + '" /></div>';
+                        return '<div class="icon"><img src="/wp-content/plugins/wowpi-guild/assets/icon/role_' + data.type + '.png" alt="' + data.name + '" /></div>';
                     },
                     'sortable': false,
                 },

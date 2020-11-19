@@ -99,7 +99,7 @@ class WowpiCron {
 		$characters[] = $characterSummary['name'];
 
 		// CHARACTER GENDER
-		$this->addTaxonomyTerm($characterPost->ID, 'wowpi_guild_gender', $characterSummary['gender']['name'], $characterSummary['gender']['name']);
+		$this->addGenderTerm($characterPost->ID, $characterSummary['gender']);
 
 		// CHARACTER REALM
 		$this->addTaxonomyTerm($characterPost->ID, 'wowpi_guild_realm', $characterSummary['realm']['name'], $characterSummary['realm']['slug']);
@@ -122,7 +122,9 @@ class WowpiCron {
 		update_field('achievement_points', $characterSummary['achievement_points'], $characterPost->ID);
 
 		// CHARACTER ACTIVE TITLE
-		update_field('active_title', $characterSummary['active_title']['display_string'], $characterPost->ID);
+		if(array_key_exists('active_title', $characterSummary) && array_key_exists('display_string', $characterSummary['active_title'])) {
+			update_field( 'active_title', $characterSummary['active_title']['display_string'], $characterPost->ID );
+		}
 
 		// AVERAGE ITEM LEVEL
 		update_field('avg_item_level', $characterSummary['average_item_level'], $characterPost->ID);
@@ -154,6 +156,17 @@ class WowpiCron {
 			$term = wp_insert_term($name, $taxonomy, array('slug' => $slug));
 		}
 		return wp_set_post_terms($postID, array($term['term_id']), $taxonomy, $append);
+	}
+
+	private function addGenderTerm($postID, $gender) {
+
+		$slug = sanitize_title($gender['name']);
+		$term = get_term_by('slug', $slug, 'wowpi_guild_gender', ARRAY_A);
+		if(!$term) {
+			$term = wp_insert_term($gender['name'], 'wowpi_guild_gender', array('slug' => $slug));
+			update_field( 'wowpi_guild_gender_type', $gender['type'], 'wowpi_guild_gender_'. $term['term_id']);
+		}
+		return wp_set_post_terms($postID, array($term['term_id']), 'wowpi_guild_gender'. false);
 	}
 
 }

@@ -98,7 +98,7 @@ class Character extends Connector {
 
 		if(array_key_exists('assets', $response)) {
 			$medias = array();
-			$newAssetStructure = array('avatar' => 'avatar', 'inset' => 'bust', 'main' => 'render');
+			$newAssetStructure = array('avatar' => 'avatar', 'inset' => 'bust', 'main' => 'render', 'main-raw' => 'raw');
 			foreach($response['assets'] as $asset) {
 				$medias[$newAssetStructure[$asset['key']]] = $asset['value'];
 			}
