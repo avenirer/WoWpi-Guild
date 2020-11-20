@@ -81,7 +81,7 @@ class PlayableSpecialization extends Connector {
 						$specImportedImages = array();
 						foreach($specMedias as $media) {
 							$specImageManipulation = new ImageManipulation();
-							$specImageUrl = $specImageManipulation->setSource($media['value'])->setDir($media['key'])->getInternalUrl();
+							$specImageUrl = $specImageManipulation->setSource($media['value'])->setDir($media['key'])->setFileName('ability_'.$playableClassId.'_'.$spec['id'])->getInternalUrl();
 							$specImportedImages[$media['key']] = $specImageUrl;
 						}
 						$classSpec['images'] = $specImportedImages;

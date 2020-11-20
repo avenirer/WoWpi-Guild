@@ -77,6 +77,8 @@ Not yet, but it aims to be. With the help of your inputs, I will keep on working
 
 == Changelog ==
 
+= 1.3.9 =
+* Other bugs fixed. Really sorry about this. Thank you, Jesse Meese.
 = 1.3.8 =
 * Fixed roster images for classes and specs and roles in different languages than english
 * Small fixes related to where the images are saved and some changes to image names themselves

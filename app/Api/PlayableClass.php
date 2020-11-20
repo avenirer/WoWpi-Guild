@@ -60,7 +60,7 @@ class PlayableClass extends Connector {
 				$importedImages = array();
 				foreach($medias as $media) {
 					$imageManipulation = new ImageManipulation();
-					$imageUrl = $imageManipulation->setSource($media['value'])->setDir($media['key'])->getInternalUrl();
+					$imageUrl = $imageManipulation->setSource($media['value'])->setDir($media['key'])->setFileName('classicon_'.$response['id'])->getInternalUrl();
 					$importedImages[$media['key']] = $imageUrl;
 				}
 				$class['images'] = $importedImages;

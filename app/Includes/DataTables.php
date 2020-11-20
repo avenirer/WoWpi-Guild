@@ -93,11 +93,10 @@ class DataTables {
 
 				$characterGenders = get_the_terms(get_the_ID(), 'wowpi_guild_gender');
 				$gender = 'male';
-				$gender_id = 'male';
 				if($characterGenders) {
 					$genderTerm = $characterGenders[0];
 					$gender = $genderTerm->name;
-					$gender_id = strtolower(get_field('wowpi_guild_gender_type', 'wowpi_guild_gender_'.$genderTerm->term_id));
+					$gender_type = strtolower(get_field('wowpi_guild_gender_type', 'wowpi_guild_gender_'.$genderTerm->term_id));
 				}
 
 				$characterClasses = get_the_terms(get_the_ID(), 'wowpi_guild_class_spec');
@@ -112,6 +111,7 @@ class DataTables {
 						else {
 							$role = get_field('wowpi_guild_spec_role', 'wowpi_guild_class_spec_'.$classTerm->term_id);
 							$role_type = get_field('wowpi_guild_spec_role_type', 'wowpi_guild_class_spec_'.$classTerm->term_id);
+							$spec_id = get_field('bnet_id', 'wowpi_guild_class_spec_'.$classTerm->term_id);
 						}
 					}
 				}
@@ -119,15 +119,21 @@ class DataTables {
 				$character         = array();
 				$character['name'] = get_the_title();
 				$character['race'] = array('name' => $race, 'icon' =>'');
-				if(isset($race_id) && isset($gender_id)) {
-					$character['race']['icon'] = $race_id . '_' . $gender_id;
+				if(isset($race_id) && isset($gender_type)) {
+					$character['race']['icon'] = 'race_'.$race_id . '_' . $gender_type.'.jpg';
 					unset($race_id);
-					unset($gender_id);
+					unset($gender_type);
 				}
 
-				$character['class'] = array('name' => $class, 'id' => '');
+				$character['class'] = array('name' => $class, 'icon' => '');
 				if(isset($class_id)) {
-					$character['class']['id'] = $class_id;
+					$icon = 'classicon_' . $class_id . '.jpg';
+					/*
+					if(isset($spec_id)) {
+						$icon = 'ability_'.$class_id.'_'.$spec_id.'.jpg';
+						unset($spec_id);
+					}*/
+					$character['class']['icon'] = $icon;
 					unset($class_id);
 				}
 				$character['role'] = array('name' => $role, 'id' => '');

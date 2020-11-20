@@ -164,7 +164,9 @@ class WowpiCron {
 		$term = get_term_by('slug', $slug, 'wowpi_guild_gender', ARRAY_A);
 		if(!$term) {
 			$term = wp_insert_term($gender['name'], 'wowpi_guild_gender', array('slug' => $slug));
-			update_field( 'wowpi_guild_gender_type', $gender['type'], 'wowpi_guild_gender_'. $term['term_id']);
+		}
+		if(!get_field('wowpi_guild_gender_type', 'wowpi_guild_gender_'. $term['term_id'])) {
+			update_field( 'wowpi_guild_gender_type', $gender['type'], 'wowpi_guild_gender_' . $term['term_id'] );
 		}
 		return wp_set_post_terms($postID, array($term['term_id']), 'wowpi_guild_gender'. false);
 	}

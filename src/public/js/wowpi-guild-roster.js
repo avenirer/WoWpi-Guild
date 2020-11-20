@@ -16,14 +16,14 @@ $(document).ready( function () {
                 {
                     'data': 'race',
                     'render': function (data, type, row) {
-                        return '<div class="icon"><img src="/wp-content/plugins/wowpi-guild/assets/icon/race_' + data.icon + '.jpg" alt="' + data.name + '" /></div>';
+                        return '<div class="icon"><img src="/wp-content/plugins/wowpi-guild/assets/icon/' + data.icon + '" alt="' + data.name + '" /></div>';
                     },
                     'sortable': false,
                 },
                 {
                     'data': 'class',
                     'render': function(data, type, row) {
-                        return '<div class="icon"><img src="/wp-content/plugins/wowpi-guild/assets/icon/classicon_' + data.id + '.jpg" alt="' + data.name + '" /></div>';
+                        return '<div class="icon"><img src="/wp-content/plugins/wowpi-guild/assets/icon/' + data.icon + '" alt="' + data.name + '" /></div>';
                     },
                     'sortable': false,
                 },

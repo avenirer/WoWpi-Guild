@@ -32,6 +32,12 @@ class ImageManipulation {
 		return $this;
 	}
 
+	public function setFileName($name) {
+		$imageArr = explode('.', $this->image->name);
+		$this->image->name = $name . '.' . $imageArr[1];
+		return $this;
+	}
+
 	public function getInternalUrl() {
 		$this->saveImage();
 		return $this->image->url;
