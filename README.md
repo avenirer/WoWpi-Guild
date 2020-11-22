@@ -31,19 +31,31 @@ This time I am working on a plugin that revolves around guilds in World of Warcr
 = Roster =
 After installation, it is time to use it. Until now, we have access to the guild roster by using a shortcode:
 
-`[wowpi_guild_roster]` - this will permit you to show the guild roster
+'[wowpi_guild_members]' allows you to show your guild's members. The shortcode also accepts additional parameters. These are:
 
-`[wowpi_guild_roster ranks="0|1|2"]` - this will only show the guild roster with the ranks 0 (Guild Master), Rank 1 and Rank 2
+*ranks="0|1|2"* - this will only show the guild roster with the ranks 0 (Guild Master), Rank 1 and Rank 2
 
-`[wowpi_guild_roster ranks="0:Guild Master|1:Wolves|2:Pups"]` - this will allow you to have custom names for your ranks
+*ranks="0:Guild Master|1:Wolves|2:Pups"* - this will allow you to have custom names for your ranks in the roster.
 
-`[wowpi_guild_roster id="your_custom_id_for_table]` - this will add the `id` attribute to the table. Only do this if you want to radically change the way the table looks.
+*id="your_custom_id_for_table"* - this will add the `id` attribute to the table. Only do this if you want to radically change the way the table looks.
 
-`[wowpi_guild_roster class="custom_css_class"]` - this will allow you to add/change a CSS class to your table. Only do  this if you want to have custom styling for your roster.
+*class="custom_css_class"* - this will allow you to add/change a CSS class to your table.
 
-`[wowpi_guild_roster rows="25"]` - this will allow you to paginate your table, each page having 25 or any number of members you wish per page.
+*rows="25"* - this will allow you to paginate your table, each page having 25 or any number of members you wish per page.
  
- `[wowpi_guild_roster rows="all"]` - this will allow you to have the whole guild roster shown, without pagination.
+*rows="all"* - this will allow you to have the whole guild roster shown, without pagination.
+
+*order_by="level desc"* - this will allow you to set an ordering of the listing; the possible choices are: 'name', 'race', 'class', 'role', 'level', 'rank'. The next value is 'asc' or 'desc', depending on which type of ordering you want - ascending or descending.
+
+*show_search="0"* - if you don't want to show the search field above the roster you can set the show_search to 0
+
+*show_select_page_length="0"* - if you don't want to allow the users to choose how many rows to see per page set this parameter to 0
+
+Example:
+
+`[wowpi_guild_members ranks="0:Guild Master|1:Wolves|2:Pups" rows="25" order_by="rank" show_select_page_length="0"]`
+
+You can set as many rosters you wish on a page.
  
 = Members post type =
 
@@ -76,7 +88,10 @@ Not yet, but it aims to be. With the help of your inputs, I will keep on working
 7. After activating the plugin, the members will be updated each hour five at a time (of course, if the website is visited), or you can reimport the members from the admin section. If something doesn't work, make sure you've synchronized the classes and specializations in the WoWpi Guild settings section (step 3). Also, the members that were not active lately in game, will be automatically set to Draft and set as inactive.
 
 == Changelog ==
-
+= 1.4.0 =
+* Allow multiple instances of roster shortcode
+* Allow ordering of roster members in shortcode
+* Allow customizing of datatables in roster shortcode
 = 1.3.9 =
 * Other bugs fixed. Really sorry about this. Thank you, Jesse Meese.
 = 1.3.8 =

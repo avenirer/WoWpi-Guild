@@ -63,7 +63,7 @@ class WowpiCron {
 	 */
 	public function updateCharacter(\WP_Post $characterPost) {
 
-		$guildRoster = Settings::getRoster();
+		$guildRoster = Settings::getRoster(true);
 		$roster = $guildRoster['roster'];
 
 		$characterId = get_field( 'bnet_id', $characterPost->ID );

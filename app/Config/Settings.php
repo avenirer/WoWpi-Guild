@@ -78,9 +78,17 @@ class Settings {
 		return $guild;
 	}
 
-	public static function getRoster() {
-		$members = get_option('wowpi_guild_guild_roster');
-		if(!$members) {
+	/**
+	 * @param false $refreshRoster - if we want to make sure we have the newest roster
+	 *
+	 * @return array|false|mixed|void
+	 */
+	public static function getRoster($refreshRoster = false) {
+		$members = false;
+		if(! $refreshRoster) {
+			$members = get_option( 'wowpi_guild_guild_roster' );
+		}
+		if( ! $members) {
 			$connector = new Guild();
 			$members = $connector->roster();
 		}
