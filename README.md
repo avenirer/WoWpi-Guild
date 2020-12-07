@@ -31,7 +31,7 @@ This time I am working on a plugin that revolves around guilds in World of Warcr
 = Roster =
 After installation, it is time to use it. Until now, we have access to the guild roster by using a shortcode:
 
-'[wowpi_guild_members]' allows you to show your guild's members. The shortcode also accepts additional parameters. These are:
+'[wowpi_guild_roster]' allows you to show your guild's members. The shortcode also accepts additional parameters. These are:
 
 *ranks="0|1|2"* - this will only show the guild roster with the ranks 0 (Guild Master), Rank 1 and Rank 2
 
@@ -53,7 +53,7 @@ After installation, it is time to use it. Until now, we have access to the guild
 
 Example:
 
-`[wowpi_guild_members ranks="0:Guild Master|1:Wolves|2:Pups" rows="25" order_by="rank" show_select_page_length="0"]`
+`[wowpi_guild_roster ranks="0:Guild Master|1:Wolves|2:Pups" rows="25" order_by="rank" show_select_page_length="0"]`
 
 You can set as many rosters you wish on a page.
  
@@ -88,6 +88,8 @@ Not yet, but it aims to be. With the help of your inputs, I will keep on working
 7. After activating the plugin, the members will be updated each hour five at a time (of course, if the website is visited), or you can reimport the members from the admin section. If something doesn't work, make sure you've synchronized the classes and specializations in the WoWpi Guild settings section (step 3). Also, the members that were not active lately in game, will be automatically set to Draft and set as inactive.
 
 == Changelog ==
+= 1.4.1 =
+* Fixed documentation
 = 1.4.0 =
 * Allow multiple instances of roster shortcode
 * Allow ordering of roster members in shortcode
