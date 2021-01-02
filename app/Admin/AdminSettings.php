@@ -122,7 +122,7 @@ class AdminSettings {
 		<!-- Create a header in the default WordPress 'wrap' container -->
 		<div class="wrap">
 
-			<h2><?php _e( 'WoWpi Guild options', 'wowpi-guild-plugin' ); ?></h2>
+			<h2><?php _e( 'WoWpi Guild options', 'wowpi-guild' ); ?></h2>
 			<?php settings_errors(); ?>
 
 			<?php if( isset( $_GET[ 'tab' ] ) ) {
@@ -132,9 +132,9 @@ class AdminSettings {
 			} // end if/else ?>
 
 			<h2 class="nav-tab-wrapper">
-				<a href="?page=wowpi_guild_settings&tab=credential_section" class="nav-tab <?php echo $active_tab == 'credential_section' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Step 1: Battle.net credentials', 'wowpi-guild-plugin' ); ?></a>
-                <a href="?page=wowpi_guild_settings&tab=realm_guild_section" class="nav-tab <?php echo $active_tab == 'realm_guild_section' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Step 2: Realm and Guild', 'wowpi-guild-plugin' ); ?></a>
-                <a href="?page=wowpi_guild_settings&tab=synchronizing_section" class="nav-tab <?php echo $active_tab == 'synchronizing_section' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Step 3: Synchronize data', 'wowpi-guild-plugin' ); ?></a>
+				<a href="?page=wowpi_guild_settings&tab=credential_section" class="nav-tab <?php echo $active_tab == 'credential_section' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Step 1: Battle.net credentials', 'wowpi-guild' ); ?></a>
+                <a href="?page=wowpi_guild_settings&tab=realm_guild_section" class="nav-tab <?php echo $active_tab == 'realm_guild_section' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Step 2: Realm and Guild', 'wowpi-guild' ); ?></a>
+                <a href="?page=wowpi_guild_settings&tab=synchronizing_section" class="nav-tab <?php echo $active_tab == 'synchronizing_section' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Step 3: Synchronize data', 'wowpi-guild' ); ?></a>
 			</h2>
 
 			<form method="post" action="options.php">
@@ -172,7 +172,7 @@ class AdminSettings {
 	 */
 	public function initialize_credentials_settings() {
 
-		add_settings_section( 'credentials_section', __( 'Battle.net credentials', 'wowpi-guild-plugin' ), array(
+		add_settings_section( 'credentials_section', __( 'Battle.net credentials', 'wowpi-guild' ), array(
 			$this,
 			'credentials_callback'
 		), 'wowpi_guild_credentials' );
@@ -180,10 +180,10 @@ class AdminSettings {
 			$this,
 			'client_id_callback'
 		), 'wowpi_guild_credentials', 'credentials_section', array( 'id' => 'client_id', ) );
-		add_settings_field('client_secret', __( 'Client secret', 'wowpi-guild-plugin' ), array($this, 'client_secret_callback'), 'wowpi_guild_credentials', 'credentials_section', array( 'id' => 'client_secret', ) );
-		add_settings_field('game', __( 'Game', 'wowpi-guild-plugin' ), array($this, 'game_callback'),'wowpi_guild_credentials', 'credentials_section', array( 'id' => 'game', ) );
-		add_settings_field('region', __('Region', 'wowpi-guild-plugin' ), array($this, 'region_callback'),'wowpi_guild_credentials','credentials_section', array( 'id' => 'region', ));
-		add_settings_field('locale', __('Locale', 'wowpi-guild-plugin' ), array($this, 'locale_callback'),'wowpi_guild_credentials','credentials_section', array( 'id' => 'locale', ));
+		add_settings_field('client_secret', __( 'Client secret', 'wowpi-guild' ), array($this, 'client_secret_callback'), 'wowpi_guild_credentials', 'credentials_section', array( 'id' => 'client_secret', ) );
+		add_settings_field('game', __( 'Game', 'wowpi-guild' ), array($this, 'game_callback'),'wowpi_guild_credentials', 'credentials_section', array( 'id' => 'game', ) );
+		add_settings_field('region', __('Region', 'wowpi-guild' ), array($this, 'region_callback'),'wowpi_guild_credentials','credentials_section', array( 'id' => 'region', ));
+		add_settings_field('locale', __('Locale', 'wowpi-guild' ), array($this, 'locale_callback'),'wowpi_guild_credentials','credentials_section', array( 'id' => 'locale', ));
 		register_setting( 'wowpi_guild_credentials', 'wowpi_guild_credentials', array(
 			'sanitize_callback' => array(
 				$this,
@@ -320,9 +320,9 @@ class AdminSettings {
 	//------------------------------------------------------ REALM AND GUILD SECTION --------------------------------------------------//
 	public function initialize_realm_guild_settings() {
 
-		add_settings_section('realm_guild_section',	__( 'Realm and Guild settings', 'wowpi-guild-plugin' ), array( $this, 'guild_callback'),'wowpi_guild_guild');
-		add_settings_field('realm', __('Realm', 'wowpi-guild-plugin' ), array($this, 'realm_callback'),'wowpi_guild_guild','realm_guild_section', array( 'id' => 'realm', ));
-		add_settings_field('guild', __('Guild', 'wowpi-guild-plugin' ), array($this, 'guild_name_callback'),'wowpi_guild_guild','realm_guild_section', array( 'id' => 'guild', ));
+		add_settings_section('realm_guild_section',	__( 'Realm and Guild settings', 'wowpi-guild' ), array( $this, 'guild_callback'),'wowpi_guild_guild');
+		add_settings_field('realm', __('Realm', 'wowpi-guild' ), array($this, 'realm_callback'),'wowpi_guild_guild','realm_guild_section', array( 'id' => 'realm', ));
+		add_settings_field('guild', __('Guild', 'wowpi-guild' ), array($this, 'guild_name_callback'),'wowpi_guild_guild','realm_guild_section', array( 'id' => 'guild', ));
 		register_setting('wowpi_guild_guild', 'wowpi_guild_guild', array('sanitize_callback' => array( $this, 'sanitize_realm_guild'),));
 
 	}
@@ -388,7 +388,7 @@ class AdminSettings {
 	//------------------------------------------------------ SYNCHRONIZING SECTION --------------------------------------------------//
 	public function initialize_synchronizing() {
 
-		add_settings_section('synchronize_section',	__( 'Synchronize static data', 'wowpi-guild-plugin' ), array( $this, 'synchronize_callback'),'wowpi_guild_synchronize');
+		add_settings_section('synchronize_section',	__( 'Synchronize static data', 'wowpi-guild' ), array( $this, 'synchronize_callback'),'wowpi_guild_synchronize');
 
 	}
 

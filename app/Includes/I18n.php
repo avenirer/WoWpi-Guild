@@ -1,6 +1,8 @@
 <?php
 namespace WowpiGuild\Includes;
 
+use WowpiGuild\Config\Settings;
+
 /**
  * Define the internationalization functionality
  *
@@ -35,11 +37,11 @@ class I18n {
 	 */
 	public function load_plugin_textdomain() {
 
-		load_plugin_textdomain(
+		var_dump(load_plugin_textdomain(
 			'wowpi-guild',
 			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
-		);
+			'wowpi-guild/languages'
+		));
 
 	}
 

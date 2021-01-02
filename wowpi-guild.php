@@ -10,14 +10,14 @@ require_once('vendor/autoload.php');
  * that starts the plugin.
  *
  * @link              https://wow-hunter.ro
- * @since             1.4.1
+ * @since             1.4.2
  * @package           Wowpi_Guild
  *
  * @wordpress-plugin
  * Plugin Name:       WoWpi Guild
  * Plugin URI:        wowpi-guild
  * Description:       You want a proper World of Warcraft's guild website but you don't know how? Look no further. This is the plugin for your guild's needs. It imports everything you need related to the guild members,and gives you the basis for a good guild website.
- * Version:           1.4.1
+ * Version:           1.4.2
  * Author:            Adrian Voicu - Avenirer
  * Author URI:        https://wow-hunter.ro
  * License:           GPL-2.0+
@@ -62,7 +62,7 @@ function my_acf_settings_show_admin( $show_admin ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'WOWPI_GUILD_VERSION', '1.4.1' );
+define( 'WOWPI_GUILD_VERSION', '1.4.2' );
 define( 'WOWPI_GUILD_NAME', 'wowpi-guild');
 
 /**
