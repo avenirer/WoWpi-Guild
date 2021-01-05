@@ -37,11 +37,11 @@ class I18n {
 	 */
 	public function load_plugin_textdomain() {
 
-		var_dump(load_plugin_textdomain(
+		load_plugin_textdomain(
 			'wowpi-guild',
 			false,
 			'wowpi-guild/languages'
-		));
+		);
 
 	}
 

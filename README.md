@@ -88,7 +88,7 @@ Not yet, but it aims to be. With the help of your inputs, I will keep on working
 7. After activating the plugin, the members will be updated each hour five at a time (of course, if the website is visited), or you can reimport the members from the admin section. If something doesn't work, make sure you've synchronized the classes and specializations in the WoWpi Guild settings section (step 3). Also, the members that were not active lately in game, will be automatically set to Draft and set as inactive.
 
 == Changelog ==
-= 1.4.2 =
+= 1.4.3 =
 * Added support for translations
 = 1.4.1 =
 * Fixed documentation
