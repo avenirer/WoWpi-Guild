@@ -45,7 +45,7 @@ After installation, it is time to use it. Until now, we have access to the guild
  
 *rows="all"* - this will allow you to have the whole guild roster shown, without pagination.
 
-*order_by="level desc"* - this will allow you to set an ordering of the listing; the possible choices are: 'name', 'race', 'class', 'role', 'level', 'rank'. The next value is 'asc' or 'desc', depending on which type of ordering you want - ascending or descending.
+*order_by="level desc"* - this will allow you to set an ordering of the listing; the possible choices are: 'name', 'level', 'rank'. The next value is 'asc' or 'desc', depending on which type of ordering you want - ascending or descending.
 
 *show_search="0"* - if you don't want to show the search field above the roster you can set the show_search to 0
 
@@ -88,6 +88,8 @@ Not yet, but it aims to be. With the help of your inputs, I will keep on working
 7. After activating the plugin, the members will be updated each hour five at a time (of course, if the website is visited), or you can reimport the members from the admin section. If something doesn't work, make sure you've synchronized the classes and specializations in the WoWpi Guild settings section (step 3). Also, the members that were not active lately in game, will be automatically set to Draft and set as inactive.
 
 == Changelog ==
+= 1.4.4 =
+* Fix roster ordering. Thank you, klaussius https://wordpress.org/support/topic/order-by-doesnt-work-2/
 = 1.4.3 =
 * Added support for translations
 = 1.4.1 =

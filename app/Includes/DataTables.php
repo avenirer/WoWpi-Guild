@@ -49,12 +49,12 @@ class DataTables {
 			}
 		}
 
-		$order = sanitize_text_field($_REQUEST['order']);
+		$order = $_REQUEST['order'];
 
 		$orderBy = array();
 		if(!empty($order)) {
 			foreach($order as $fieldDirection) {
-				$orderBy[$fields[$fieldDirection['column']]] = $fieldDirection['dir'];
+				$orderBy[$fields[sanitize_text_field($fieldDirection['column'])]] = sanitize_text_field($fieldDirection['dir']);
 			}
 		}
 
@@ -66,6 +66,16 @@ class DataTables {
 							$args['orderby'] = array();
 						}
 						$args['orderby']['title'] = $direction;
+						break;
+					case 'rank':
+						$args['meta_key'] = 'guild_rank';
+						$args['orderby'] = 'meta_value';
+						$args['order'] = $direction;
+						break;
+					case 'level':
+						$args['meta_key'] = 'character_level';
+						$args['orderby'] = 'meta_value';
+						$args['order'] = $direction;
 						break;
 
 				}
