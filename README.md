@@ -88,6 +88,8 @@ Not yet, but it aims to be. With the help of your inputs, I will keep on working
 7. After activating the plugin, the members will be updated each hour five at a time (of course, if the website is visited), or you can reimport the members from the admin section. If something doesn't work, make sure you've synchronized the classes and specializations in the WoWpi Guild settings section (step 3). Also, the members that were not active lately in game, will be automatically set to Draft and set as inactive.
 
 == Changelog ==
+= 1.4.5 =
+* Fix search using ranks in guild roster. Thank you, Klaussius https://wordpress.org/support/topic/bug-detected-with-two-different-rosters/
 = 1.4.4 =
 * Fix roster ordering. Thank you, klaussius https://wordpress.org/support/topic/order-by-doesnt-work-2/
 = 1.4.3 =

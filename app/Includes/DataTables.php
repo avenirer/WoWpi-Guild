@@ -10,9 +10,14 @@ class DataTables {
 
 		$fieldNames = filter_var_array($_REQUEST['columns']);
 		$fields = array();
+		$searchBy = array();
 		foreach($fieldNames as $key => $field) {
 			$fields[$key] = $field['data'];
+			if(strlen($field['search']['value']) > 0) {
+				$searchBy[$field['data']] = $field['search']['value'];
+			}
 		}
+
 		$offset = intval(sanitize_text_field($_REQUEST['start']));
 		$limit = intval(sanitize_text_field($_REQUEST['length']));
 
@@ -28,10 +33,12 @@ class DataTables {
 			$args['s'] = sanitize_text_field($_REQUEST['search']['value']);
 		}
 
-		if(array_key_exists('ranks', $_REQUEST)) {
+
+
+		if(array_key_exists('rank', $searchBy)) {
 			$ranks = array();
 			$rankValues = array();
-			$guildRanks = sanitize_text_field( $_REQUEST['ranks'] );
+			$guildRanks = filter_var(rawurldecode($searchBy['rank']), FILTER_SANITIZE_STRING);
 			$ranksArr = explode('|', $guildRanks);
 			foreach($ranksArr as $rank) {
 				$rankDef = explode(':', $rank);
@@ -43,6 +50,7 @@ class DataTables {
 					'relation'		=> 'AND',
 					array(
 						'key'	 	=> 'guild_rank',
+						'compare' => 'IN',
 						'value'	  	=> $rankValues,
 					)
 				);

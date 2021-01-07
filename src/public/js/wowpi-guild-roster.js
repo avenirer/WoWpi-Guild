@@ -5,6 +5,7 @@ $(document).ready( function () {
     const tableColumns = ['name', 'race', 'class', 'role', 'level', 'rank'];
 
     $('.wowpi-roster').each( function() {
+        let tableRanks = $(this).data('ranks');
         let dataTableOpts = {
             "processing": true,
             "serverSide": true,
@@ -45,6 +46,14 @@ $(document).ready( function () {
                     'data': 'rank',
                     'sortable': false,
                 },
+            ],
+            'searchCols' : [
+                null,
+                null,
+                null,
+                null,
+                null,
+                { "search": tableRanks}
             ]
         }
 

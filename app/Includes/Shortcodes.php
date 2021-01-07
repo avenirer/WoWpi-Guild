@@ -41,9 +41,11 @@ class Shortcodes {
 		$showSelectPageLength = intval($pull_guild_atts['show_select_page_length']);
 		$ajaxUrl = admin_url('admin-ajax.php?action=getRoster');
 
-		if($ranks) {
+		/*
+		if(strlen($ranks) > 0) {
 			$ajaxUrl .= '&ranks='.$ranks;
 		}
+		*/
 
 		$rows = is_numeric($rows) ? intval($rows) : 1000;
 
@@ -81,7 +83,7 @@ class Shortcodes {
 			'columns' => json_encode($columns)
 		) );
 
-		return '<table id="' . $tableId . '" class="wowpi-roster ' . $tableClass .'" data-length="'.$rows.'" data-orderby="'.$orderBy.'" data-showsearch="' . $showSearch . '" data-showselectlength="' . $showSelectPageLength . '">
+		return '<table id="' . $tableId . '" class="wowpi-roster ' . $tableClass .'" data-length="'.$rows.'" data-orderby="'.$orderBy.'" data-showsearch="' . $showSearch . '" data-showselectlength="' . $showSelectPageLength . '" data-ranks="'. rawurlencode($ranks) .'">
     <thead>
         <tr>
             <th>'.__('Name', 'wowpi-guild').'</th>
